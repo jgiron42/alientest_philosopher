@@ -41,10 +41,9 @@ echo "If you are still developing and this tester causes you to have multiple pr
 echo -e $WHITE
 
 echo -e $YELLOW
-echo "If you want to test all philo -> 'bash leak_test.sh'
-To test only philo : 'bash leak_test.sh 1'
-To test only philo_two : 'bash leak_test.sh 2'
-To test only philo_bonus : 'bash leak_test.sh 3'"
+echo "If you want to test all philo -> 'bash leak_test.sh all'
+To test only philo : 'bash leak_test.sh'
+To test only philo_bonus : 'bash leak_test.sh bonus'"
 echo -e $WHITE
 
 echo
