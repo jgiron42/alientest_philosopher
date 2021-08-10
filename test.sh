@@ -14,25 +14,18 @@ echo "If you are still developing and this tester causes you to have multiple pr
 echo -ne $WHITE
 
 echo -e $YELLOW
-echo -n "If you want to test all philo -> 'bash test.sh'
-To test only philo_one : 'bash test.sh 1'
-To test only philo_two : 'bash test.sh 2'
-To test only philo_three : 'bash test.sh 3'"
+echo -n "If you want to test all philo -> './test.sh bonus'
+To test only philo : './test.sh'
+To test only philo_bonus : './test.sh bonus'"
 echo -ne $WHITE
 
-if [ "$1" == "1" ];
-then
-	PHILOSOPHES=( philo_one )
-elif [ "$1" == 2 ];
-then
-	PHILOSOPHES=( philo_two )
-elif [ "$1" == 3 ];
+if [ "$1" = "bonus" ];
 then
     echo -e $RED
     read  -n 1 -p "
 /!\ WARNING /!\\
 
-    You have selected tests for philo_three, there is going to be a lot of forks involved.
+    You have selected tests for philo_bonus, there is going to be a lot of forks involved.
     Be sure that you kill/exit most forks with manual tests + ''ps -ef | philo' before you go ahead.
     Otherwise, it could make your machine crash.
 
@@ -41,22 +34,25 @@ then
 /!\ WARNING /!\\
 " input
     echo -ne $WHITE
-	PHILOSOPHES=( philo_three )
+	PHILOSOPHES=( philo_bonus )
+elif [ "$1" = "all" ];
+then
+    echo -e $RED
+    read  -n 1 -p "
+/!\ WARNING /!\\
+
+    You have selected tests for all philo, there is going to be a lot of forks involved for philo_bonus.
+    Be sure that you kill/exit most forks with manual tests + ''ps -ef | philo' before you go ahead.
+    Otherwise, it could make your machine crash.
+
+    If you are sure, press enter, if not, ctrl+C
+
+/!\ WARNING /!\\
+" input
+    echo -ne $WHITE
+	PHILOSOPHES=( philo philo_bonus )
 else
-    echo -e $RED
-    read  -n 1 -p "
-/!\ WARNING /!\\
-
-    You have selected tests for all philo, there is going to be a lot of forks involved for philo_three.
-    Be sure that you kill/exit most forks with manual tests + ''ps -ef | philo' before you go ahead.
-    Otherwise, it could make your machine crash.
-
-    If you are sure, press enter, if not, ctrl+C
-
-/!\ WARNING /!\\
-" input
-    echo -ne $WHITE
-	PHILOSOPHES=( philo_one philo_two philo_three )
+	PHILOSOPHES=( philo )
 fi
 
 echo "Testing Norm"
@@ -72,9 +68,8 @@ else
 fi
 echo
 
-make -C ../philo_one
-make -C ../philo_two
-make -C ../philo_three
+make -C ../philo
+make -C ../philo_bonus
 
 
 for philosophe in ${PHILOSOPHES[*]}

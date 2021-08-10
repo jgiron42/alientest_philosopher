@@ -42,9 +42,9 @@ echo -e $WHITE
 
 echo -e $YELLOW
 echo "If you want to test all philo -> 'bash leak_test.sh'
-To test only philo_one : 'bash leak_test.sh 1'
+To test only philo : 'bash leak_test.sh 1'
 To test only philo_two : 'bash leak_test.sh 2'
-To test only philo_three : 'bash leak_test.sh 3'"
+To test only philo_bonus : 'bash leak_test.sh 3'"
 echo -e $WHITE
 
 echo
@@ -53,21 +53,17 @@ echo "To test leaks, check leak.log, if no valgrind, re-run script on VM and con
 echo -ne $WHITE
 echo
 
-make -C ../philo_one
-make -C ../philo_two
-make -C ../philo_three
+make -C ../philo
+make -C ../philo_bonus
 
-if [ "$1" == "1" ];
+if [ "$1" == "all" ];
 then
-	PHILOSOPHES=( philo_one )
-elif [ "$1" == 2 ];
+	PHILOSOPHES=( philo philo_bonus )
+elif [ "$1" == "bonus" ];
 then
-	PHILOSOPHES=( philo_two )
-elif [ "$1" == 3 ];
-then
-	PHILOSOPHES=( philo_three )
+	PHILOSOPHES=( philo_bonus )
 else
-	PHILOSOPHES=( philo_one philo_two philo_three )
+	PHILOSOPHES=( philo )
 fi
 
 rm leak.log

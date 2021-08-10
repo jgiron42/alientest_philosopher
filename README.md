@@ -1,6 +1,8 @@
-# alientest_philosopher
+# alientest_philosopher_2021
 
-Clone this repo at your philosopher's root (at the same level of your philo_one, philo_two and philo_three directories).
+this repo is a fork of [alientest_philosophers](https://github.com/lienardale/alientest_philosopher.git) made by [lienardale](https://github.com/lienardale) adapted to the new subject (2021)
+
+Clone this repo at your philosopher's root (at the same level of your philo and philo_bonus directories).
 
 Basic usage : 'bash test.sh'
 
@@ -18,11 +20,11 @@ To run only one test or valgrind with your own args, you can use :
 - bash one.sh 
 - bash valgrind.sh
 with the same args as if you were executing one of your philosophers + the nb of the philo you want to test as the first arg
-ex : "bash one.sh 1 2 10 5 5" (launches ./philo_one 2 10 5 5)
+ex : "bash one.sh 1 2 10 5 5" (launches ./philo 2 10 5 5)
 
-To run only test.sh on only one philosopher, add the philosopher's nb in args.
-ex : 'bash test.sh 2' -> runs the script only for philo_two
+To run the test for all the philo add "all" to the arguments.
+To run only test.sh for philo_bonus add "bonus" to the arguments.
 
 To run only valgrind tests : 'bash leak_test.sh'
-To run only leak_test.sh on only one philosopher, add the philosopher's nb in args.
-ex : 'bash leak_test.sh 2' -> runs the script only for philo_two
+To run the test for all the philo add "all" to the arguments.
+To run only leak_test.sh for philo_bonus add "bonus" to the arguments.
